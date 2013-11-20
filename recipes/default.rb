@@ -26,6 +26,7 @@ template node['zabbix']['agent_conf'] do
     :pidfile => "#{node['zabbix']['agent_pid_dir']}/zabbix_agentd.pid",
     :debuglevel => node['zabbix']['agent_debuglevel'],
     :server_name => node['zabbix']['server_name'],
+    :active_check => node['zabbix']['active_check'],
     :include_dir => "/etc/zabbix/agent-conf.d",
     :listen => listen_ip
   )

@@ -6,6 +6,10 @@ Server=<%= @server_name %>
 #
 Hostname=<%= @node['fqdn'] %>
 #
+<% if @active_check %>
+ServerActive=<%= @server_name %>
+<% end %>
+#
 StartAgents=3
 RefreshActiveChecks=60
 DebugLevel=<%= @debuglevel %>
