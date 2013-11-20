@@ -4,7 +4,7 @@
 #
 
 package node['zabbix']['package'] do
-  action :install
+  action :upgrade
 end
 
 listen_ip = if IPAddress.valid?(node['zabbix']['listen'])
