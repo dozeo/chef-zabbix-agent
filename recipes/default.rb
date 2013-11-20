@@ -27,6 +27,7 @@ template node['zabbix']['agent_conf'] do
     :debuglevel => node['zabbix']['agent_debuglevel'],
     :server_name => node['zabbix']['server_name'],
     :active_check => node['zabbix']['active_check'],
+    :host_metadata => node['zabbix']['host_metadata'],
     :include_dir => "/etc/zabbix/agent-conf.d",
     :listen => listen_ip
   )
