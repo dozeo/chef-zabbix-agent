@@ -17,7 +17,9 @@ PidFile=<%= @pidfile %>
 LogFile=<%= @logfile %>
 LogFileSize=10
 Timeout=3
+<% if @listen %>
 ListenIP=<%= @listen %>
+<% end %>
 Include=<%= @include_dir %>
 HostMetadata=<%= @host_metadata %>
 

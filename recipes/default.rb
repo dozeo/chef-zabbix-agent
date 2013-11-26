@@ -7,14 +7,6 @@ package node['zabbix']['package'] do
   action :upgrade
 end
 
-listen_ip = if IPAddress.valid?(node['zabbix']['listen'])
-  node['zabbix']['listen']
-elsif %w{any all}.include?(node['zabbix']['listen'])
-  "0.0.0.0"
-else
-  node['network']['interfaces'][node['zabbix']['listen']]['addresses'].select { |address, data| data['family'] == "inet" }.first.first
-end
-
 template node['zabbix']['agent_conf'] do
   source   "zabbix_agentd.conf.erb"
   owner    "root"
@@ -30,7 +22,7 @@ template node['zabbix']['agent_conf'] do
     :active_check => node['zabbix']['active_check'],
     :host_metadata => node['zabbix']['host_metadata'],
     :include_dir => "/etc/zabbix/agent-conf.d",
-    :listen => listen_ip
+    :listen => node['zabbix']['listen']
   )
 end
 
